@@ -1,10 +1,10 @@
-import React, { useState, useEffect  } from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  ActivityIndicator, 
-  ScrollView, 
+import React, { useState, useEffect } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  ScrollView,
   FlatList,
   TouchableOpacity,
   Dimensions,
@@ -67,50 +67,50 @@ const Dashboard = () => {
         </View>
         <Text style={styles.cardTitle}>{item.name}</Text>
       </View>
-      
+
       <View style={styles.cardBody}>
         <View style={styles.infoRow}>
           <Icon name="location-on" size={16} color="#6c757d" />
           <Text style={styles.infoText}>{item.location}</Text>
         </View>
-        
+
         <View style={styles.infoRow}>
           <Icon name="people" size={16} color="#6c757d" />
           <Text style={styles.infoText}>{item.federationName}</Text>
         </View>
-        
+
         <View style={styles.infoRow}>
           <Icon name="person" size={16} color="#6c757d" />
           <Text style={styles.infoText}>{item.vendorName}</Text>
         </View>
-        
+
         <View style={styles.infoRow}>
           <Icon name="date-range" size={16} color="#6c757d" />
           <Text style={styles.infoText}>{formatDate(item.createdDate)}</Text>
         </View>
-        
-        <View style={styles.coordinatesContainer}>
-          <TouchableOpacity 
-  style={styles.coordinatesContainer}
-  onPress={() => {
-    const url = `https://www.google.com/maps/search/?api=1&query=${item.latitude},${item.longitude}`;
-    Linking.openURL(url).catch(err => console.error("Couldn't load page", err));
-  }}
->
-          <View style={styles.coordinateItem}>
-            <Icon name="language" size={14} color="#6c757d" />
-            <Text style={styles.coordinateText}>Lat: {item.latitude.toFixed(4)}</Text>
-          </View>
-     
-          <View style={styles.coordinateItem}>
-            <Icon name="language" size={14} color="#6c757d" />
-            <Text style={styles.coordinateText}>Lng: {item.longitude.toFixed(4)}</Text>
-          </View>
 
-               </TouchableOpacity>
+        <View style={styles.cardFooter}>
+          <TouchableOpacity
+            style={styles.coordinatesContainer}
+            onPress={() => {
+              const url = `https://www.google.com/maps/search/?api=1&query=${item.latitude},${item.longitude}`;
+              Linking.openURL(url).catch(err => console.error("Couldn't load page", err));
+            }}
+          >
+            <View style={styles.coordinateItem}>
+              <Icon name="language" size={14} color="#6c757d" />
+              <Text style={styles.coordinateText}>Lat: {item.latitude.toFixed(4)}</Text>
+            </View>
+
+            <View style={styles.coordinateItem}>
+              <Icon name="language" size={14} color="#6c757d" />
+              <Text style={styles.coordinateText}>Lng: {item.longitude.toFixed(4)}</Text>
+            </View>
+
+          </TouchableOpacity>
         </View>
       </View>
-      
+
       {/* <View style={styles.cardFooter}>
         <Text style={styles.idText}>ID: {item.id}</Text>
       </View> */}
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   cardHeader: {
-   flexDirection: 'row',
+    flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#f5a70a',  // Primary blue
     paddingVertical: 6,
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   iconContainer: {
-    backgroundColor: '#FF9500',
+    backgroundColor: '#f5a70a',
     width: 32,
     height: 32,
     borderRadius: 16,
@@ -250,9 +250,9 @@ const styles = StyleSheet.create({
   coordinatesContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    gap : 70,
-    marginTop: 12,
-  
+    gap: 70,
+
+
   },
   coordinateItem: {
     flexDirection: 'row',
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
   cardFooter: {
     borderTopWidth: 1,
     borderTopColor: '#e9ecef',
-    padding: 12,
+    padding: 5,
     backgroundColor: '#f8f9fa',
   },
   idText: {
